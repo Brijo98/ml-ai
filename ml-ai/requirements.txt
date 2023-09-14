@@ -1,0 +1,6 @@
+numpy==1.25.2
+pandas==2.0.3
+keybert==0.7.0
+# PyMySQL==1.1.0
+flask-restful==0.3.10
+textblob==0.15.3

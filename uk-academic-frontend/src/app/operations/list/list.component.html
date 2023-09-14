@@ -1,0 +1,37 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > {{"Loading"}}... </p></ngx-spinner>
+<div>
+    <div style="display: flex; justify-content: space-between; padding: 16px;">
+        <h3>
+          Operations List
+        </h3>
+        <button mat-raised-button color="primary" routerLink="/operations/add" color="primary">Add</button>
+    </div>
+    <ngx-datatable
+      class="material"
+      [rows]="rows"
+      [columns]="columns"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      
+      [count]="page.totalElements"
+      
+      [selected]="selected"
+      [selectionType]="SelectionType.single"
+      
+      (select)="selectedRow($event)"
+    >
+    <ngx-datatable-column *ngFor="let column of columns" name="{{column.name}}" prop="{{column.name}}">
+        
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            {{value}}
+          </ng-template>
+      </ngx-datatable-column>
+    <!-- <ngx-datatable-column name="Actions" prop="action">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <button (click)="selectedRow()" type="button" class="btn btn-primary btn-outline-success">View</button>
+        </ng-template>
+      </ngx-datatable-column> -->
+    </ngx-datatable>
+  </div>

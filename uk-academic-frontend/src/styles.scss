@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '/node_modules/@swimlane/ngx-datatable/index.scss';
+@import '/node_modules/@swimlane/ngx-datatable/assets/icons.css';
+@import '/node_modules/@swimlane/ngx-datatable/themes/material.scss';
+@import '/node_modules/@angular/material/index';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn {
+    padding: 5px;
+    background: #1560b6;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+}

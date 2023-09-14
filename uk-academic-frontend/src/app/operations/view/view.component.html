@@ -1,0 +1,54 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > {{message}}... </p></ngx-spinner>
+<div>
+    <h1>
+        Operation Details
+    </h1>
+    <div class="flex">
+        <div>
+            Type: {{data?.type}}
+        </div>
+        <div>
+            Data Processing: <p>{{data?.is_processing_done ? 'Done': 'Not Done' }}</p>
+            <button mat-raised-button color="primary" class="btn" (click)="startDataProcessing()" *ngIf="data?.is_processing_done === false">Start Data Processing</button>
+        </div>
+        <div *ngIf="data?.type === 'Keyword Extraction' && data?.is_processing_done">
+            Keyword Extraction <p>{{data?.is_extraction_done? 'Done' : 'Not Done'}}</p>
+            <button mat-raised-button color="primary" class="btn" (click)="startKeywordExtraction()" *ngIf="data?.is_extraction_done === false">Start Keyword Extraction</button>
+        </div>
+        <div *ngIf="data?.type !== 'Keyword Extraction' && data?.is_processing_done">
+            Sentiment Analysis: <p>{{data?.is_sentiment_performed? 'Done': 'Not Done'}}</p>
+            <button mat-raised-button color="primary" class="btn" (click)="startSentimentAnalysis()" *ngIf="data?.is_sentiment_performed === false">Start Sentiment Analysis</button>
+        </div>
+    </div>
+    <hr>
+</div>
+<mat-tab-group>
+    <mat-tab label="Raw Data">
+        <div>
+            <ol>
+                <li *ngFor="let item of data?.raw_data">{{item?.data}}</li>
+            </ol>
+        </div>
+    </mat-tab>
+    <mat-tab *ngIf="data?.is_processing_done" label="Processed Data">
+        <div>
+            <ol>
+                <li *ngFor="let item of data?.processed_data">{{item?.data}}</li>
+            </ol>
+        </div>
+    </mat-tab>
+    <mat-tab *ngIf="data?.is_extraction_done" label="Keyword Extraction">
+        <div>
+            <ol>
+                <li *ngFor="let item of data?.keyword_data">{{item?.keyword}}: {{item?.value | number : '1.2-2'}}</li>
+            </ol>
+        </div>
+    </mat-tab>
+    <mat-tab *ngIf="data?.is_sentiment_performed" label="Sentiment Analysis">
+        <div>
+            <ol>
+                <li style="font-size: large; padding: 5px;" *ngFor="let item of data?.sentiment_data">Polarity: <span [ngStyle]="{'color': (item?.polarity > 0) ? '#2CD390' : '#df2033'}">{{item?.polarity | number : '1.2-2'}} {{ (item?.polarity > 0) ? '(Positive)' : '(Negative)'}}</span> |  Subjectivity: {{item?.subjectivity | number : '1.2-2'}}</li>
+            </ol>
+        </div>
+    </mat-tab>
+</mat-tab-group>

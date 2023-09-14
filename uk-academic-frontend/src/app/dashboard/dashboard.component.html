@@ -1,0 +1,50 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-subtitle>Total Data Operation Performed</mat-card-subtitle>
+      <mat-card-title>{{data?.count}}</mat-card-title>
+    </mat-card-header>
+    <!-- <mat-card-actions align="end">
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+</mat-card>
+<br>
+<div style="display: flex; justify-content: space-between; width: 100%;">
+    <div style="width: 50%; padding: 10px;">
+        <mat-card>
+        <mat-card-header>
+            <mat-card-subtitle>Raw Data Added</mat-card-subtitle>
+            <mat-card-title>{{data?.rawCount}}</mat-card-title>
+        </mat-card-header>
+       
+        </mat-card>
+    </div>
+    <div style="width: 50%; padding: 10px;">
+        <mat-card>
+        <mat-card-header>
+            <mat-card-subtitle>Data Processed</mat-card-subtitle>
+            <mat-card-title>{{data?.processCount}}</mat-card-title>
+        </mat-card-header>
+        </mat-card>
+    </div>
+</div>
+
+<div style="display: flex; justify-content: space-between; width: 100%;">
+    <div style="width: 50%; padding: 10px;">
+        <mat-card>
+        <mat-card-header>
+            <mat-card-subtitle>Keywords Extracted</mat-card-subtitle>
+            <mat-card-title>{{data?.keywordCount}}</mat-card-title>
+        </mat-card-header>
+       
+        </mat-card>
+    </div>
+    <div style="width: 50%; padding: 10px;">
+        <mat-card>
+        <mat-card-header>
+            <mat-card-subtitle>Data on which sentiment analysis was performed</mat-card-subtitle>
+            <mat-card-title>{{data?.sentimentCount}}</mat-card-title>
+        </mat-card-header>
+        </mat-card>
+    </div>
+</div>

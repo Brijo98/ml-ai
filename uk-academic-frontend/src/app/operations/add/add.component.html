@@ -1,0 +1,34 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > {{"Loading"}}... </p></ngx-spinner>
+<form action="">
+    <div>
+        <h1>
+            Add Raw Data For Training
+        </h1>
+        <hr>
+    </div>
+    <div style="display: flex; flex-direction: column; padding: 10px;">
+        <label for="type">Type:</label>
+        &nbsp;
+        <select style="height: 30px; padding: 5px;" name="type" id="type" [(ngModel)]="type" [value]="type">
+            <option *ngFor="let val of values" value="{{val}}">{{val}}</option>
+        </select>
+    </div>
+    <div style="display: flex; flex-direction: column; padding: 10px; ">
+        <label for="data">Data:</label>
+        <div
+        style="width: 100%; padding: 5px;"
+        *ngFor="let item of data; let i = index"
+        >
+        <input style="width: 80%; height: 30px;" name="{{i}}" placeholder="Raw Data" [(ngModel)]="data[i]" [value]="item" id="{{i}}" cols="30" rows="10">
+        &nbsp;
+        <button mat-stroked-button color="warn" style="width: 10%;" (click)="remove(i)" >remove</button>
+    </div>
+
+    </div>
+    <div style="padding: 10px;">
+        <button mat-raised-button color="accent"  (click)="addNew()"> add</button>
+    </div>
+    <div style="padding: 10px;">
+        <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+</form>
